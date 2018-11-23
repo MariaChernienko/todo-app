@@ -1,71 +1,47 @@
-var form = document.querySelector(".form-container");
-var btn = document.querySelector(".btn");
-var fields = document.querySelectorAll(".field");
+/* eslint-disable func-names */
+(function anon() {
+  const inputContainer = document.querySelector('.input');
+  const inputField = document.querySelector('.input__field');
+  const closeBtns = [];
 
-var textVal = document.querySelectorAll(".textVal");
-var emailVal = document.querySelector(".emailVal");
-var passwordVal = document.querySelector(".passwordVal");
+  const createArrow = function () {
+    const arrow = document.createElement('div');
+    arrow.innerHTML = '&#60';
+    arrow.classList.add('arrow');
+    inputContainer.appendChild(arrow);
+  };
 
+  const addNewItem = function (val) {
+    const newItem = document.createElement('div');
+    newItem.innerHTML = val;
+    newItem.classList.add('input__item');
 
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
-  fields.forEach(element => {
-    element.classList.remove("empty");
-    if (element.value == 0) {
-      element.classList.add("empty");
-    } 
-  });
-  var emptyFieldsCounter = document.querySelectorAll(".empty").length;
-  if (emptyFieldsCounter == 0) {
-    form.submit();
-  }
-});
+    const footer = document.querySelector('.input__footer');
+    footer.classList.add('active-footer');
+    inputContainer.insertBefore(newItem, footer);
 
-textVal.forEach(element => {
-  element.addEventListener("input", function(event) {
-    deleteErrors();
-    var abs = element.value;
-    this.style.border = "1px solid green";
+    const checkedIcon = document.createElement('div');
+    checkedIcon.classList.add('input__item-checked');
+    newItem.appendChild(checkedIcon);
 
-    if(abs.match(/['"]/)) {
-      addError(element, "This field can not include &#39 and &#34");
+    const closeIcon = document.createElement('div');
+    closeIcon.classList.add('input__item-close');
+    newItem.appendChild(closeIcon);
+    closeBtns.push(closeIcon);
+  };
+  
+
+  inputField.addEventListener('keypress', (e) => {
+    const inputValue = inputField.value;
+
+    if (e.key === 'Enter' && inputValue != '') {
+      createArrow();
+      addNewItem(inputValue);
+      closeBtns.forEach((element) => {
+        element.addEventListener('click', () => {
+          element.parentNode.remove();
+        });
+      });
     }
   });
-});
-
-emailVal.addEventListener("input", function(event) {
-  deleteErrors();
-  var abs = this.value;
-  this.style.border = "1px solid green";
-
-  if(!(abs.match(/[0-9a-z_]+@[0-9a-z_]+\.[a-z]{2,5}/i))) {
-    addError(emailVal, "This field should be like asd@asd.yu");
-  }
-});
-
-passwordVal.addEventListener("input", function(event) {
-  deleteErrors();
-  var abs = this.value;
-  this.style.border = "1px solid green";
-
-  if(!(abs.match(/[0-9a-z_]{6}/i))) {
-    addError(passwordVal, "At least six characters");
-  }
-});
-
-function addError(element, errorMessage) {
-  var error = document.createElement("div");
-  error.className = "error";
-  error.style.color = "red";
-  error.innerHTML = errorMessage;
-  element.parentElement.appendChild(error);
-  element.style.border = "1px solid red";
-}
-function deleteErrors() {
-  var errors = form.querySelectorAll(".error");
-  for(var i = 0; i < errors.length; i++) {
-    errors[i].remove();
-  }
-}
-
-
+}());
