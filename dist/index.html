@@ -8,30 +8,25 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-      <h1>todos</h1>
-      <div class="input">
-        <input type="text" class="input__field" placeholder="What needs to be done?">
-        <!-- <div class="arrow">&#60</div>
-        <div class="input__item">hola
-          <div class="input__item-checked"></div>
-          <div class="input__item-close"></div>
-        </div>
-        <div class="input__item">
-          <div class="input__item-checked"></div>
-          <div class="input__item-close"></div>hola</div>
-        <div class="input__item">
-          <div class="input__item-checked"></div>
-          <div class="input__item-close"></div>hola</div>
-      </div> -->
+    <h1>todos</h1>
+    <div class="input">
+      <input
+        type="text"
+        class="input__field"
+        placeholder="What needs to be done?"
+      />
+      <div class="input__content"></div>
+
       <div class="input__footer">
-        <div class="input__footer-counter">1 item left</div>
+        <div class="input__footer-counter"><span>1</span>item left</div>
         <nav class="input__footer-btns">
-          <div class="btn">all</div>
-          <div class="btn">active</div>
-          <div class="btn">completed</div>
+          <div class="btn" data-action="all">all</div>
+          <div class="btn" data-action="active">active</div>
+          <div class="btn" data-action="completed">completed</div>
         </nav>
-        <div class="btn">clear completed</div>
+        <div class="btn" data-action="clear">clear completed</div>
       </div>
+    </div>
     <script src="./js/main.js"></script>
   </body>
 </html>

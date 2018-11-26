@@ -54,15 +54,19 @@ h1 {
     font-weight: 100;
     border-bottom: 1px solid #eee;
     
-    &-checked {
-      position: absolute;
-      left: 10px;
-      top: 20px;
-      width: 28px;
-      height: 28px;
-      border: 1px solid #eee;
-      border-radius: 50%;
+    
+    &-unchecked {
+      position: absolute;      
+      left: 5px;
+      top: 15px;
+      width: 35px;
+      height: 35px;
+      background: url("../images/unchecked.svg") no-repeat center center;
+      cursor: pointer;
+    }
 
+    .checked {
+      background: url("../images/checked.svg") no-repeat center center;
     }
     &-close {
       opacity: 0;
@@ -87,6 +91,10 @@ h1 {
     &:hover .input__item-close{
       opacity: 0.7;
     } 
+  }
+  .crossed {
+    text-decoration: line-through;
+    color: rgb(116, 112, 112);
   }
   &__footer {
     padding: 20px;

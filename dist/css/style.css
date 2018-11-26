@@ -50,14 +50,16 @@ h1 {
     color: #000;
     font-weight: 100;
     border-bottom: 1px solid #eee; }
-    .input__item-checked {
+    .input__item-unchecked {
       position: absolute;
-      left: 10px;
-      top: 20px;
-      width: 28px;
-      height: 28px;
-      border: 1px solid #eee;
-      border-radius: 50%; }
+      left: 5px;
+      top: 15px;
+      width: 35px;
+      height: 35px;
+      background: url("../images/unchecked.svg") no-repeat center center;
+      cursor: pointer; }
+    .input__item .checked {
+      background: url("../images/checked.svg") no-repeat center center; }
     .input__item-close {
       opacity: 0;
       position: absolute;
@@ -78,6 +80,9 @@ h1 {
         height: 20px; }
     .input__item:hover .input__item-close {
       opacity: 0.7; }
+  .input .crossed {
+    text-decoration: line-through;
+    color: #747070; }
   .input__footer {
     padding: 20px;
     display: none;
